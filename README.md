@@ -29,37 +29,118 @@ yarn add FlashConsole
 ### Basic Logging
 
 ```javascript
-import { log, success, error, warning, info } from 'FlashConsole';
-
-log('Hello, world!');          // Default log
-success('Operation done!');    // Success message
-error('Something went wrong'); // Error message
-warning('This is a warning');  // Warning message
-info('FYI: Info message');     // Info message
+import FlashConsole, {
+  log,
+  error,
+  clear,
+  warn,
+  info,
+  debug,
+  trace,
+  assert,
+  dir,
+  table,
+  time,
+  timeEnd,
+  group,
+  groupEnd,
+  count,
+  countReset,
+  profile,
+  profileEnd,
+  memory,
+  exception,
+  prompt,
+  confirm,
+  alert,
+  fetchData,
+  setTimeoutFunc,
+  setIntervalFunc,
+  clearTimeoutFunc,
+  clearIntervalFunc,
+  navigatorInfo,
+  windowInfo,
+  typeWriter,
+} from "FlashConsole";
 ```
 
 ### Custom Styling
 
 ```javascript
-log('Custom style message', { 
-  color: 'cyan', 
-  background: 'black', 
-  bold: true, 
-  italic: true 
-});
-```
+// -----------------------------
+// Basic Logs with Custom Styles
+// -----------------------------
+log("Default log", { color: "black" });
+error("Error log", { color: "white", background: "red", bold: true });
+warn("Warning log", { color: "orange", bold: true });
+info("Info log", { color: "white", background: "blue" });
+debug("Debug log", { color: "purple", italic: true });
+trace("Trace log", { color: "gray" });
+assert(false, "Assertion failed!", { color: "white", background: "red" });
 
-### Custom Actions
+// -----------------------------
+// Console Utilities
+// -----------------------------
+clear(); // Clears console
 
-```javascript
-import FlashConsole from 'FlashConsole';
+dir({ name: "FlashConsole", version: "1.0.0" }); // Inspect object
+table([{ name: "Alice" }, { name: "Bob" }]); // Display table
 
-FlashConsole.custom('Shiny log', {
-  color: 'magenta',
-  background: 'yellow',
-  bold: true,
-  effect: 'glow'
-});
+time("loadTime");
+// simulate code
+timeEnd("loadTime");
+
+group("Grouped Logs");
+log("First message", { color: "green" });
+log("Second message", { color: "blue" });
+groupEnd();
+
+count("MyCounter");
+count("MyCounter");
+countReset("MyCounter");
+
+profile("CPU Profile");
+// simulate code
+profileEnd();
+
+console.log(memory()); // Memory info
+
+// -----------------------------
+// Browser Utilities
+// -----------------------------
+try {
+  exception("Custom exception thrown!");
+} catch (err) {
+  error(err.message, { color: "white", background: "red" });
+}
+
+prompt("Enter your name:");
+confirm("Are you sure?");
+alert("This is an alert!");
+
+fetchData("https://jsonplaceholder.typicode.com/todos/1")
+  .then((data) => info("Fetched data:", { color: "cyan" }))
+  .catch((err) => error(err, { color: "white", background: "red" }));
+
+const timeoutId = setTimeoutFunc(
+  () => log("Timeout executed", { color: "green" }),
+  1000
+);
+clearTimeoutFunc(timeoutId);
+
+const intervalId = setIntervalFunc(
+  () => log("Interval running", { color: "purple" }),
+  2000
+);
+clearIntervalFunc(intervalId);
+
+console.log(navigatorInfo());
+console.log(windowInfo());
+
+// -----------------------------
+// Animated Logs
+// -----------------------------
+typeWriter("Typing effect log...", 100, { color: "magenta", bold: true });
 ```
 
 ---
@@ -72,7 +153,7 @@ FlashConsole transforms your console into a **colorful, stylish, and fun experie
 
 ## ❤️ Contributing
 
-Contributions are welcome! Open issues, submit pull requests, or suggest new features. Together we can make PrismLog even fancier.  
+Contributions are welcome! Open issues, submit pull requests, or suggest new features. Together we can make PrismLog even fancier.
 
 ---
 
