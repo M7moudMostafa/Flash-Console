@@ -1,8 +1,29 @@
 {
-  "name": "flash-console",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@ma7moudattia/flash-console",
+  "version": "1.0.0",
   "type": "module",
+  "description": "A web-based console application for managing and monitoring various tasks.",
+  "main": "dist/flash-console.umd.js",
+  "module": "dist/flash-console.es.js",
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "console",
+    "logger",
+    "javascript",
+    "debug",
+    "library"
+  ],
+  "author": "Mahmoud Mostafa",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:M7moudMostafa/Flash-Console.git"
+  },
+  "bugs": {
+    "url": "https://github.com/M7moudMostafa/Flash-Console/issues"
+  },
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -10,8 +31,5 @@
   },
   "devDependencies": {
     "vite": "^7.1.2"
-  },
-  "dependencies": {
-    "vite-plugin-inspect": "^11.3.2"
   }
 }

@@ -1,6 +1,12 @@
 import { defineConfig } from "vite";
-import Inspect from "vite-plugin-inspect";
+import { resolve } from "path";
 
 export default defineConfig({
-    plugins: [Inspect()]
+    build: {
+        lib: {
+            entry: resolve(__dirname, "src/main.js"),
+            name: "FlashConsole",
+            fileName: (format) => `flash-console.${format}.js`
+        }
+    }
 })
